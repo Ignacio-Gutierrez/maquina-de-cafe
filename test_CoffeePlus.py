@@ -14,6 +14,39 @@ class CoffeeMachineTest(unittest.TestCase):
         machine.add_resource('coin', 1)
         self.assertEqual(machine.resources['coin'], 1)
 
+    def test_chose_drink(self):
+        machine = MasterCoffeeMachine()
+        machine.chose_drink(1)
+        self.assertEqual(machine.Drink_Maker(machine.chose_drink), 'Inserte una moneda')
+
+    def test_chose_drink2(self):
+        machine = MasterCoffeeMachine()
+        machine.add_resource('coin', 1)
+        machine.add_resource('coffee', -500)
+        machine.chose_sugar(10)
+        self.assertEqual(machine.Drink_Maker(2), 'No hay café' )
+
+    def test_chose_drink3(self):
+        machine = MasterCoffeeMachine()
+        machine.add_resource('coin', 1)
+        machine.add_resource('coffee', -500)
+        machine.chose_sugar(10)
+        self.assertEqual(machine.Drink_Maker(3), 'No hay café' )
+
+    def test_chose_drink4(self):
+        machine = MasterCoffeeMachine()
+        machine.add_resource('coin', 1)
+        machine.add_resource('coffee', -500)
+        machine.chose_sugar(10)
+        self.assertEqual(machine.Drink_Maker(4), 'No hay café' )
+
+    def test_chose_drink5(self):
+        machine = MasterCoffeeMachine()
+        machine.add_resource('coin', 1)
+        machine.add_resource('coffee', -500)
+        machine.chose_sugar(10)
+        self.assertEqual(machine.Drink_Maker(5), 'No hay café' )
+
     def test_insert_coffee_second_time(self):
         machine = MasterCoffeeMachine()
         machine.add_resource('coffee', 1000)
@@ -61,6 +94,20 @@ class CoffeeMachineTest(unittest.TestCase):
         machine.chose_sugar(1) 
         self.assertEqual(machine.Drink_Maker(3), 'No hay leche') 
         self.assertEqual(machine.resources['milk'], 2000-2000)
+    
+    def test_not_milk2(self):
+        machine = MasterCoffeeMachine()
+        machine.add_resource('coin', 1)
+        machine.add_resource('milk', -2000)
+        machine.chose_sugar(1) 
+        self.assertEqual(machine.Drink_Maker(4), 'No hay leche') 
+
+    def test_not_milk3(self):
+        machine = MasterCoffeeMachine()
+        machine.add_resource('coin', 1)
+        machine.add_resource('milk', -2000)
+        machine.chose_sugar(1) 
+        self.assertEqual(machine.Drink_Maker(5), 'No hay leche') 
 
     def test_not_chocolate(self):
         machine = MasterCoffeeMachine()
